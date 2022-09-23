@@ -8,12 +8,9 @@ namespace HomeTasks_KisEA
         {
             void showIntegers(int n, int m)
             {
-                if(n < m)
-                    for(int i = n; i <= m; i ++) Console.Write($"{i} ");
-                else if(n > m)
-                    for(int i = m; i <= n; i++) Console.Write($"{i} ");
-                
-                Console.WriteLine();
+                if(m > n)
+                    showIntegers(n, m - 1);
+                Console.Write($"{m} ");              
             }
             
             try
@@ -23,7 +20,10 @@ namespace HomeTasks_KisEA
                 int n = Convert.ToInt32(Console.ReadLine());
                 Console.Write("M: ");
                 int m = Convert.ToInt32(Console.ReadLine());
-                showIntegers(n,m);
+                
+                if(n < m) showIntegers(n,m);
+                else Console.WriteLine("Число N должно быть меньше M");
+
             }
             catch
             {
