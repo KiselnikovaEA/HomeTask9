@@ -6,16 +6,12 @@ namespace HomeTasks_KisEA
     {
         static void Main (string[] args)        // Программа выводит сумму натуральных элементов в промежутке от N до M
         {
+
             int showSumIntegers(int n, int m)
             {
-                int sum = 0;
-                if(n < m)
-                    for(int i = n; i <= m; i ++) sum = sum + i;
-                
-                else if(n > m)
-                    for(int i = m; i <= n; i++) sum = sum + i;
-
-                return sum;
+                if(n == m)
+                    return n;
+                return m + showSumIntegers(n, m - 1);
             }
             
             try
@@ -25,7 +21,10 @@ namespace HomeTasks_KisEA
                 int n = Convert.ToInt32(Console.ReadLine());
                 Console.Write("M: ");
                 int m = Convert.ToInt32(Console.ReadLine());
-                Console.Write($"Сумма элементов в промежутке от N до M равна: {showSumIntegers(n,m)}");
+
+                if(n < m)
+                    Console.Write($"Сумма элементов в промежутке от N до M равна: {showSumIntegers(n,m)}");
+                else Console.Write($"Число N должно быть меньше M");
             }
             catch
             {
